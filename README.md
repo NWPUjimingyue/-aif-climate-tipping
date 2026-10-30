@@ -9,14 +9,9 @@ A buyer proposes carbon-trading contracts to a host whose abatement cost is priv
 
 ## Archive and citation
 
-The archived version of this code is on Zenodo (DOI to be added at release). Please cite it together with the Letter; `CITATION.cff` holds the metadata.
+Version 1.3.1 of this code is the GitHub release [v1.3.1](https://github.com/jmy223410/-aif-climate-tipping/releases/tag/v1.3.1) of https://github.com/jmy223410/-aif-climate-tipping. Please cite it together with the Letter; `CITATION.cff` holds the metadata, and GitHub shows it under "Cite this repository".
 
-### Publishing on GitHub and Zenodo
-
-1. Create a public GitHub repository (e.g. `aif-climate-tipping`) and push this folder; `.gitignore` excludes caches.
-2. Log in to Zenodo with the GitHub account, open *GitHub* in the Zenodo account menu, and switch the repository on.
-3. On GitHub, create a release with the tag `v1.3.1`. Zenodo archives the release, reads `.zenodo.json` for title, authors, licence and keywords, and assigns a DOI.
-4. Put the DOI into the reference `jixing2026code` of the Letter (`doi={10.5281/zenodo.<number>}` in place of the note "DOI pending"), into `CITATION.cff`, and into this README.
+A DOI can be added through Zenodo: log in to zenodo.org with the GitHub account, switch this repository on under *GitHub* in the account menu, and publish a new release. Zenodo then archives the release, reads `.zenodo.json` for title, authors, licence and keywords, and assigns a DOI.
 
 ## Requirements
 
