@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the accompanying Letter."
+title: "Code for: Ergodicity Breaking of Active Inference in Carbon Trading before Tipping"
+authors:
+  - family-names: Ji
+    given-names: Mingyue
+    affiliation: "School of Automation, Northwestern Polytechnical University"
+  - family-names: Xing
+    given-names: Hui
+    affiliation: "School of Physical Science and Technology, Northwestern Polytechnical University"
+version: "1.3.1"
+date-released: "2026-10-30"
+license: MIT
+# Fill in after publishing (see README, "Publishing on GitHub and Zenodo"):
+# repository-code: "https://github.com/<owner>/aif-climate-tipping"
+# doi: "10.5281/zenodo.<number>"
+preferred-citation:
+  type: article
+  title: "Ergodicity Breaking of Active Inference in Carbon Trading before Tipping"
+  authors:
+    - family-names: Ji
+      given-names: Mingyue
+    - family-names: Xing
+      given-names: Hui
+  journal: "Physical Review Letters (in preparation)"
+  year: 2026
