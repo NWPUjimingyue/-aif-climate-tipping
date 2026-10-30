@@ -47,6 +47,7 @@ P = Params()
 TH = thresholds(P)
 PC = P.sigma_mid
 LAM_A = brentq(lambda l: lyapunov(l, PC)[0], 2, 1e4)
+PDF_META = {'CreationDate': None}     # no time stamp, so that reruns give byte-identical PDFs
 
 
 def panel(ax, s, x=0.035, y=0.955, va_='top', **kw):
@@ -180,7 +181,7 @@ def fig1():
     cb.outline.set_linewidth(0.6)
     cb.set_label(r'$G_{1/2}-\min G_{1/2}$', fontsize=9, labelpad=2)
     panel(axC, '(c)', x=-0.40, y=1.0, va_='bottom')
-    fig.savefig(os.path.join(OUT, 'fig1.pdf'))
+    fig.savefig(os.path.join(OUT, 'fig1.pdf'), metadata=PDF_META)
     plt.close(fig)
 
 
@@ -273,7 +274,7 @@ def fig2():
     cbA.ax.tick_params(labelsize=FS, width=0.6, length=2.0); cbA.outline.set_linewidth(0.6)
     cbA.set_label(r'Lyapunov exponent $\Lambda$', fontsize=9, labelpad=2)
     panel(axA, '(b)', y=0.05, va_='bottom')
-    fig.savefig(os.path.join(OUT, 'fig2.pdf'))
+    fig.savefig(os.path.join(OUT, 'fig2.pdf'), metadata=PDF_META)
     plt.close(fig)
 
 
@@ -328,7 +329,7 @@ def fig3():
     hs = [Line2D([], [], ls='none', marker=mk[k][0], color=mk[k][1], mfc='white') for k in names]
     fig.legend(hs, list(names.values()), loc='upper center', bbox_to_anchor=(0.53, 1.0), ncol=3,
                handlelength=1.0, columnspacing=0.8, handletextpad=0.3)
-    fig.savefig(os.path.join(OUT, 'fig3.pdf'))
+    fig.savefig(os.path.join(OUT, 'fig3.pdf'), metadata=PDF_META)
     plt.close(fig)
 
 
@@ -420,7 +421,7 @@ def fig4():
     labs = ['informed', 'Bayes-optimal'] + [x[4] for x in sty] + ['ergodic']
     fig.legend(hs, labs, loc='upper center', bbox_to_anchor=(0.53, 1.0), ncol=4, handlelength=1.6,
                columnspacing=0.7, handletextpad=0.3)
-    fig.savefig(os.path.join(OUT, 'fig4.pdf'))
+    fig.savefig(os.path.join(OUT, 'fig4.pdf'), metadata=PDF_META)
     plt.close(fig)
 
 

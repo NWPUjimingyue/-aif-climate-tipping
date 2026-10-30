@@ -15,7 +15,7 @@ A DOI can be added through Zenodo: log in to zenodo.org with the GitHub account,
 
 ## Changes
 
-- 1.3.2: corrected standard errors of the learning exponents (`exp_universal.fit_nu`; the slopes are unchanged, Table S3 and Fig. 3(b) updated, `python3 exp_universal.py refit` recomputes them from the stored data); Fig. 2(b) arrows drawn from the computed gains; failures of background jobs now stop `reproduce_all.sh`, which also runs `exp_phase.py`; stale cross-references in comments corrected.
+- 1.3.2: stored data replaced by the output of a complete rerun of `reproduce_all.sh` (bit-identical except for the earlier separately recomputed lambda = 1.4 entries, which change within sampling error and change no quoted number); figure PDFs without time stamps; corrected standard errors of the learning exponents (`exp_universal.fit_nu`; the slopes are unchanged, Table S3 and Fig. 3(b) updated, `python3 exp_universal.py refit` recomputes them from the stored data); Fig. 2(b) arrows drawn from the computed gains; failures of background jobs now stop `reproduce_all.sh`, which also runs `exp_phase.py`; stale cross-references in comments corrected.
 - 1.3.1: first public release.
 
 ## Requirements
@@ -46,7 +46,7 @@ Monte Carlo results reproduce within sampling error; the dynamic programs and al
 
 Notes on reproduction:
 
-- Every script fixes its random seed. The stored entries for lambda = 0.5, 1 and 1.4 in `surv_curves.npz` and for lambda = 1.4 in `surv_N.npz` and `fold.npz` were recomputed after a correction of the small-belief branch of `TablePolicy`; the released scripts contain the correction and reproduce these entries within sampling error.
+- Every script fixes its random seed. The files in `data/` are the output of `reproduce_all.sh` with the released scripts: a complete rerun from an empty `data/` folder in a fresh environment (Python 3.13, NumPy 2.5.4, SciPy 1.18.1, Matplotlib 3.11.2) reproduces every file bit for bit, and `make_figures.py` then reproduces the figures of the Letter.
 - At finite policy precision the pragmatic buyer (no epistemic value) uses lambda = 20 in the policy posterior, so its effective precision is 20 gamma (`exp_gamma.py`).
 - The learning exponents of Fig. 3(b) and Table S3 are weighted least-squares fits over 1e-4 <= |delta ell_0| <= 1e-2 with 6e4 runs per point (`exp_universal.py`); `paper_numbers.py` also prints an unweighted fit for the logit host over 1e-6 <= |ell_0| <= 1e-1 from `fig2b.npz`.
 - `exp_heat.py` takes two arguments, the part index and the number of parts; `reproduce_all.sh` runs both parts in parallel.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Regenerate every data file in data/ and the figures in figures/.
-# Run from the repository root. About three hours on two cores.
+# Run from the repository root. About two hours on two cores.
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p data figures
