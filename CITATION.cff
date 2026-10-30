@@ -11,7 +11,7 @@ authors:
 version: "1.3.1"
 date-released: "2026-10-30"
 license: MIT
-repository-code: "https://github.com/jmy223410/-aif-climate-tipping"
+repository-code: "https://github.com/NWPUjimingyue/-aif-climate-tipping"
 # doi: "10.5281/zenodo.<number>"  (add if the release is archived on Zenodo)
 preferred-citation:
   type: article

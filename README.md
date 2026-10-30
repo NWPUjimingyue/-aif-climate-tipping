@@ -9,7 +9,7 @@ A buyer proposes carbon-trading contracts to a host whose abatement cost is priv
 
 ## Archive and citation
 
-Version 1.3.1 of this code is the GitHub release [v1.3.1](https://github.com/jmy223410/-aif-climate-tipping/releases/tag/v1.3.1) of https://github.com/jmy223410/-aif-climate-tipping. Please cite it together with the Letter; `CITATION.cff` holds the metadata, and GitHub shows it under "Cite this repository".
+Version 1.3.1 of this code is the GitHub release [v1.3.1](https://github.com/NWPUjimingyue/-aif-climate-tipping/releases/tag/v1.3.1) of https://github.com/NWPUjimingyue/-aif-climate-tipping. Please cite it together with the Letter; `CITATION.cff` holds the metadata, and GitHub shows it under "Cite this repository".
 
 A DOI can be added through Zenodo: log in to zenodo.org with the GitHub account, switch this repository on under *GitHub* in the account menu, and publish a new release. Zenodo then archives the release, reads `.zenodo.json` for title, authors, licence and keywords, and assigns a DOI.
 
