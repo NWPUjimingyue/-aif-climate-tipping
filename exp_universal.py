@@ -46,15 +46,33 @@ def lam_collapse(rng):
             print(out[-1], flush=True)
     json.dump(out, open('data/universal_lam.json', 'w'), indent=1)
 
+def fit_nu(u0s, P, N):
+    """Slope of ln P_learn against ln|delta ell_0| by least squares weighted with the number of learned runs,
+    and its standard error from binomial noise, Var(ln P_i) = (1 - P_i)/(N P_i), propagated through the
+    weighted fit (sandwich form; agrees with a parametric bootstrap)."""
+    x = np.log(np.asarray(u0s, float)); P = np.asarray(P, float); n = np.maximum(P * N, 1)
+    sl = np.polyfit(x, np.log(np.maximum(P, 1e-9)), 1, w=np.sqrt(n))[0]
+    xb = np.sum(n * x) / np.sum(n)
+    se = np.sqrt(np.sum(n * (1 - P) * (x - xb) ** 2)) / np.sum(n * (x - xb) ** 2)
+    return float(sl), float(se)
+
+def refit():
+    """Recompute slopes and standard errors of data/universal_nu.json from the stored learning probabilities."""
+    path = 'data/universal_nu.json'; out = json.load(open(path))
+    for r in out:
+        r['nu_sim'], r['se'] = fit_nu(r['u0'], r['P'], NU_RUNS)
+    json.dump(out, open(path, 'w'), indent=1)
+
+NU_RUNS = 60000
+
 def nu_case(name, rng):
     mk, x0, lams = NU_CASES[name]
     M = mk(); xs, pc, D = M.confounding(x0); ls = M.ell_star(xs)
     u0s = np.geomspace(1e-2, 1e-4, 5); out = []
     for lam in lams:
-        tab = Table(M, lam, ls, xs); K = D * tab.g / (pc * (1 - pc)); N = 60000
-        P = np.array([p_learn(M, tab, u0, N, rng)[0] for u0 in u0s]); n_ev = P * N
-        sl = np.polyfit(np.log(u0s), np.log(np.maximum(P, 1e-9)), 1, w=np.sqrt(np.maximum(n_ev, 1)))[0]
-        se = np.sqrt(np.sum(1 / np.maximum(n_ev, 1)) / np.sum((np.log(u0s) - np.log(u0s).mean()) ** 2))
+        tab = Table(M, lam, ls, xs); K = D * tab.g / (pc * (1 - pc)); N = NU_RUNS
+        P = np.array([p_learn(M, tab, u0, N, rng)[0] for u0 in u0s])
+        sl, se = fit_nu(u0s, P, N)
         out.append(dict(model=name, lam=lam, pc=pc, K=K, nu_th=nu_of(K, pc), nu_sim=sl, se=se,
                         u0=u0s.tolist(), P=P.tolist(), on=bool(tab.on)))
         print(out[-1], flush=True)
@@ -72,5 +90,7 @@ if __name__ == '__main__':
         lam_collapse(rng)
     elif sys.argv[1] == 'merge':
         merge()
+    elif sys.argv[1] == 'refit':
+        refit()
     else:
         nu_case(sys.argv[2], np.random.default_rng(sum(map(ord, sys.argv[2]))))

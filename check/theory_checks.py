@@ -1,4 +1,4 @@
-"""Numerical checks of the theoretical statements of the Letter and SM (Theorems 2 and 5, Lemma 1)."""
+"""Numerical checks of the theoretical statements of the Letter and SM (Lemma 1 and Theorems 2, 3, 5, and 6)."""
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import numpy as np

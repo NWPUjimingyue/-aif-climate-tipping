@@ -57,7 +57,7 @@ def thresholds_depth(P):
 
 
 class PolicyD(Policy):
-    """Policy of Eq. (6) in the limit of large gamma with the depth-weighted pragmatic value."""
+    """Policy of Eq. (S5) in the limit of large gamma with the depth-weighted pragmatic value."""
     def __init__(self, P, lam, epistemic=True, ngrid=1601):
         super().__init__(P, lam, epistemic, ngrid)
         self.rg = P.rho(self.xg)

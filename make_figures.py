@@ -250,8 +250,14 @@ def fig2():
     pa = brentq(lambda p: K_a(p) - 1 / (2 * p - 1), 0.6, 0.95)
     axA.plot([pa], [K_a(pa)], 'o', ms=4.5, color='white', mec=INK, mew=0.9, zorder=5)
     arr = dict(arrowstyle='-|>', lw=1.0, mutation_scale=8, shrinkA=0, shrinkB=0)
-    axA.annotate('', xy=(0.9, 1.27), xytext=(0.9, 6.0), arrowprops=dict(color=INK, **arr))
-    axA.annotate('', xy=(0.9, 0.47), xytext=(0.9, 0.84), arrowprops=dict(color=INK, **arr))
+    # paths of the Curie-Weiss law for falling temperature: logit host from K(lambda_c) to K_inf = lambda_s,
+    # allowance sale from the onset of the compromise (lambda = 3.88, Sec. S6) to its K_inf
+    from universal import allowance_sale
+    Ms = allowance_sale(100, 20, 0.3, 0.9); xs_, pcs_, Ds_ = Ms.confounding(0.3)
+    Kinf_s, lams_s = Ms.theory(xs_, pcs_, Ds_, Ms.ell_star(xs_))
+    K_top = float(lyapunov(TH['rho_max'], PC)[2])
+    axA.annotate('', xy=(0.9, 1 / (2 * PC - 1)), xytext=(0.9, K_top), arrowprops=dict(color=INK, **arr))
+    axA.annotate('', xy=(0.9, Kinf_s), xytext=(0.9, Kinf_s * 3.88 / (3.88 - lams_s)), arrowprops=dict(color=INK, **arr))
     axA.set_yscale('log'); axA.set_xlim(0.52, 0.99); axA.set_ylim(Klo, Khi)
     axA.set_yticks([0.5, 1, 2, 5]); axA.set_yticklabels(['0.5', '1', '2', '5'])
     axA.yaxis.set_minor_formatter(mticker.NullFormatter())

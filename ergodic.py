@@ -5,7 +5,7 @@ where q' is the posterior after response a (the term ln D(q) does not depend on 
 import warnings
 import numpy as np
 from core import sig, Hb, Policy, TablePolicy, Params
-warnings.filterwarnings("ignore", category=RuntimeWarning)
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="ergodic")   # log(0) at the confounding contract is intended
 
 def info(ell):
     """D = ln 2 - H(w) for w = sigma(ell), accurate near ell = 0 and for large |ell|."""
@@ -72,7 +72,7 @@ class ErgodicTablePolicy(TablePolicy):
         self.kappa = np.nan
         self.lmax = mag[-1]
 
-# ---------------- design-dependent abatement depth (calibration, Sec. S9) ----------------
+# ---------------- design-dependent abatement depth (calibration, Sec. S10) ----------------
 def G_erg_depth(P, ell, x, lam):
     w = sig(ell)
     pl, ph = P.pL(x), P.pH(x)

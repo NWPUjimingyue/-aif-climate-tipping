@@ -1,7 +1,7 @@
 {
   "title": "Code and data for \"Ergodicity Breaking of Active Inference in Carbon Trading before Tipping\"",
   "upload_type": "software",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "<p>Python code and simulated data that reproduce every figure, table and quoted number of the Letter <em>Ergodicity Breaking of Active Inference in Carbon Trading before Tipping</em> (M. Ji and H. Xing, intended for Physical Review Letters) and its Supplemental Material. The code implements the active-inference buyer, the epistemic loop gain and the universal multiplicative map at a confounding contract, the ergodic epistemic value, the Bayes-optimal benchmark, and the calibration with emissions, mitigation pathways and carbon budgets. <code>reproduce_all.sh</code> regenerates all data and figures; <code>paper_numbers.py</code> prints the main quoted values; <code>check/theory_checks.py</code> tests the theorems numerically.</p>",
   "creators": [
     {"name": "Ji, Mingyue", "affiliation": "School of Automation, Northwestern Polytechnical University"},

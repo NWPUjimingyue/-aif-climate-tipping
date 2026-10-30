@@ -1,8 +1,7 @@
 """Finite policy precision: designs sampled from q(x) ~ exp(-gamma G_w(x)).
-For gamma >= 30 the policy posterior is sampled in the Laplace approximation around the
-global minimizer. Competing branches carry relative weights of order exp(-gamma*dG). For lambda > lambda_c
+The policy posterior is sampled in the Laplace approximation around the global minimizer. Competing branches carry relative weights of order exp(-gamma*dG). For lambda > lambda_c
 these are negligible; for lambda = 1.4 the compromise branch lies dG = 0.049 above the type test and carries a
-posterior mass of about 0.6% at gamma = 100, which the sampling neglects (SM Sec. S5)."""
+posterior mass of about 0.6% at gamma = 100, which the sampling neglects (SM Sec. S7)."""
 import numpy as np
 from core import *
 

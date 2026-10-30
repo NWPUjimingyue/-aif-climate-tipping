@@ -9,9 +9,14 @@ A buyer proposes carbon-trading contracts to a host whose abatement cost is priv
 
 ## Archive and citation
 
-Version 1.3.1 of this code is the GitHub release [v1.3.1](https://github.com/NWPUjimingyue/-aif-climate-tipping/releases/tag/v1.3.1) of https://github.com/NWPUjimingyue/-aif-climate-tipping. Please cite it together with the Letter; `CITATION.cff` holds the metadata, and GitHub shows it under "Cite this repository".
+Version 1.3.2 of this code is the GitHub release [v1.3.2](https://github.com/NWPUjimingyue/-aif-climate-tipping/releases/tag/v1.3.2) of https://github.com/NWPUjimingyue/-aif-climate-tipping. Please cite it together with the Letter; `CITATION.cff` holds the metadata, and GitHub shows it under "Cite this repository".
 
 A DOI can be added through Zenodo: log in to zenodo.org with the GitHub account, switch this repository on under *GitHub* in the account menu, and publish a new release. Zenodo then archives the release, reads `.zenodo.json` for title, authors, licence and keywords, and assigns a DOI.
+
+## Changes
+
+- 1.3.2: corrected standard errors of the learning exponents (`exp_universal.fit_nu`; the slopes are unchanged, Table S3 and Fig. 3(b) updated, `python3 exp_universal.py refit` recomputes them from the stored data); Fig. 2(b) arrows drawn from the computed gains; failures of background jobs now stop `reproduce_all.sh`, which also runs `exp_phase.py`; stale cross-references in comments corrected.
+- 1.3.1: first public release.
 
 ## Requirements
 
@@ -28,7 +33,7 @@ The code was run with Python 3.13, NumPy 2.5, SciPy 1.18 and Matplotlib 3.11. No
 ```
 python3 paper_numbers.py      # main quoted theory values and key results from the stored data (seconds)
 python3 make_figures.py       # Figs. 1-4 from the stored data, written to figures/
-python3 check/theory_checks.py  # checks of the theorems against the exact functions (seconds)
+python3 check/theory_checks.py  # checks of the theorems against the exact functions (about half a minute)
 ```
 
 The data files used for the manuscript are included in `data/`. To regenerate them from scratch:

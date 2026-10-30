@@ -9,6 +9,7 @@ def solve_dp(P, N, B0, lmax=14.0, nl=561, nx=201, store_policy=False):
     # budget lattice in units of q, where 1 = n1*q and 1-alpha = n0*q
     from fractions import Fraction
     fa = Fraction(alpha).limit_denominator(64)
+    assert abs(float(fa) - alpha) < 1e-12, 'alpha must be a fraction with denominator <= 64 for the budget lattice'
     q = Fraction(1, fa.denominator)
     n_ref = int(1 / q)                 # lattice steps for a refusal
     n_acc = int((1 - fa) / q)          # lattice steps for reciprocation

@@ -72,7 +72,7 @@ for Dv, v in zip(fd['D'], dB):
     print('D = %.0e: Delta B = %.2f   Kramers estimate %.2f   excess %+.0f%%' % (Dv, v, mu / kB, 100 * (v * kB / mu - 1)))
 f = D('fold.npz'); sh = dict(zip(fd['D'].tolist(), fd['b50'] - 0.5))
 lo_w, hi_w = 1 - P.alpha * P.p_max, 1 - P.alpha * s
-for k in ('prag', 'aif1.4', 'oracle'):                    # largest deviation of the shifted survival curves (Sec. S8) from D = 0
+for k in ('prag', 'aif1.4', 'oracle'):                    # largest deviation of the shifted survival curves (Sec. S9) from D = 0
     dev = 0.0
     for Dv in (1e-3, 3e-3):
         xs = f['bb'] - sh[Dv]; mm = (xs > lo_w) & (xs < hi_w)
